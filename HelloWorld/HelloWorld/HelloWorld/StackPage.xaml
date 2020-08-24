@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HelloWorld.StackPage"
+             Padding="0, 20, 0, 0">
+    <!-- Aqui so podemos ter 1 filho -->
+    <ContentPage.Content>
+        <!-- Por default stacklayout ocupa todo pai -->
+        <!-- VerticalOptions=Fill por default -->
+        <!-- HorizontalOptions=Fill por default -->
+        <!-- Estas sao as propriedades por default -->
+        <StackLayout 
+            Orientation="Horizontal"
+            Padding="40"
+            Spacing="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            
+            <StackLayout
+                Orientation="Vertical">
+                <Label Text="Labe 0" BackgroundColor="Gray"/>
+                <Label Text="Label 1" BackgroundColor="Gray"/>
+            </StackLayout>
+
+            <Label Text="Label 2" BackgroundColor="Gray"/>
+            <Label Text="Label 3" BackgroundColor="Gray"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
