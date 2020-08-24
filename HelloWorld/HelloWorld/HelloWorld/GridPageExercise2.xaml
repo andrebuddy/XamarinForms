@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HelloWorld.GridPageExercise2"
+             Background="#127ac7">
+    <ContentPage.Content>
+        <Grid Padding="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout Grid.Row="0" 
+                         VerticalOptions="Center">
+                <Label Text="Welcome to Xamarin"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="White" />
+                <Label Text="Cross-platform apps mde easy"
+                   FontSize="18"
+                   FontAttributes="None"
+                   HorizontalOptions="Center"
+                   TextColor="White" />
+            </StackLayout>
+
+            <Button Grid.Row="1" BackgroundColor="#1dabf0" TextColor="White" Text="Login"/>
+            <Button Grid.Row="2" BackgroundColor="#1dabf0" TextColor="White" Text="Register"/>
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
