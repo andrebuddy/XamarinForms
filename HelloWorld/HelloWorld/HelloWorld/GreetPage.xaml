@@ -21,14 +21,14 @@
             BindingContext="{x:Reference slider}"
             HorizontalOptions="Center" 
             VerticalOptions="Center">
+            
             <BoxView Color="Green" 
                      Opacity="{Binding Value}"/>
             <Label 
                 x:Name="label"
                 Text="{Binding Value, StringFormat='Value is {0:F2}' }"
                 Opacity="{Binding Path=Value}" />
-            <Slider
-                x:Name="slider"></Slider>
+            <Slider x:Name="slider"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
