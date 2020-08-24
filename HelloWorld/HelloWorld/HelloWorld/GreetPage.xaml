@@ -17,14 +17,16 @@
     <!-- AQUI so podemos ter uma single view -->
     <!--nao podemos ter multiple view, multiple widgets aqui-->
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout 
+            BindingContext="{x:Reference slider}"
+            HorizontalOptions="Center" 
+            VerticalOptions="Center">
             <BoxView Color="Green" 
-                     Opacity="{Binding Source={x:Reference slider}, Path=Value}}}"/>
-            <Label BindingContext="{x:Reference slider}"
+                     Opacity="{Binding Value}"/>
+            <Label 
                 x:Name="label"
                 Text="{Binding Value, StringFormat='Value is {0:F2}' }"
-                Opacity="{Binding Path=Value}"
-                />
+                Opacity="{Binding Path=Value}" />
             <Slider
                 x:Name="slider"></Slider>
         </StackLayout>
