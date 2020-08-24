@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HelloWorld.GridPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Yellow"
+              RowSpacing="40"
+              ColumnSpacing="40">
+            <!-- Property element syntax -->
+            <!-- Estamos a definir 3 linhas, primeira com 100 altura, para o restante espaco, 2nd linha e 2x mais alta q terceira -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Text="Label 1" BackgroundColor="Silver" />
+            <Label Grid.Row="0" Grid.Column="1" Text="Label 2" BackgroundColor="Silver" />
+            <Label Grid.Row="1" Grid.Column="0" Text="Label 3" BackgroundColor="Silver" />
+            <Label Grid.Row="1" Grid.Column="1" Text="Label 4" BackgroundColor="Silver" />
+            <Label Grid.Row="2" Grid.ColumnSpan="3" Text="ColumnSpan" BackgroundColor="Silver" />
+            <Label Grid.Column="2" Grid.RowSpan="3" Text="RowSpan" BackgroundColor="Silver"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

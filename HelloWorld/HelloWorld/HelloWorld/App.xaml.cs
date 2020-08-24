@@ -10,7 +10,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new StackPageExercise2();
+            MainPage = new GridPage();
         }
 
         protected override void OnStart()
