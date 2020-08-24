@@ -12,7 +12,7 @@
         <!-- VerticalOptions=Fill por default -->
         <!-- HorizontalOptions=Fill por default -->
         <!-- Estas sao as propriedades por default -->
-        <StackLayout 
+        <!--<StackLayout 
             Orientation="Horizontal"
             Padding="40"
             Spacing="20"
@@ -27,6 +27,6 @@
 
             <Label Text="Label 2" BackgroundColor="Gray"/>
             <Label Text="Label 3" BackgroundColor="Gray"/>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
