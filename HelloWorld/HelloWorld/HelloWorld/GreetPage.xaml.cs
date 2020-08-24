@@ -16,14 +16,6 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            //assim e dificil fazer layout com hierarquia
-            //Content = new Label
-            //{
-            //    HorizontalOptions = LayoutOptions.Center,
-            //    VerticalOptions = LayoutOptions.Center,
-            //    Text = "Hello World"
-            //};
-
             slider.Value = 0.5;
         }
 
@@ -32,11 +24,6 @@ namespace HelloWorld
         private void Button_Clicked(object sender, EventArgs e)
         {
             DisplayAlert("Title", "Hello World", "Ok");
-        }
-
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            label.Text = String.Format("Value is {0:F2}", e.NewValue);
         }
     }
 }
