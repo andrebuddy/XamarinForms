@@ -18,18 +18,12 @@
     <!--nao podemos ter multiple view, multiple widgets aqui-->
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Button 
-                Text="Click me"
-                Clicked="Button_Clicked"></Button>
-            <Label 
+            <BoxView Color="Green" 
+                     Opacity="{Binding Source={x:Reference slider}, Path=Value}}}"/>
+            <Label BindingContext="{x:Reference slider}"
                 x:Name="label"
-                Text="{Binding 
-                    Source={x:Reference slider}, 
-                    Path=Value, 
-                    StringFormat='Value is {0:F2}' }"
-                Opacity="{Binding 
-                    Source={x:Reference slider},
-                    Path=Value}"
+                Text="{Binding Value, StringFormat='Value is {0:F2}' }"
+                Opacity="{Binding Path=Value}"
                 />
             <Slider
                 x:Name="slider"></Slider>
