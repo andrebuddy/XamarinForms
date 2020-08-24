@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HelloWorld.GreetPage">
+
+    <!-- XML namespace declarations -->
+    <!--
+        xmlns       elementos sem prefixos, ContentPage, este elemento pretence a xamarin forms
+        xmlns:x     qualquer elemento ou atributos com prefixo x, pretence a este namespace
+        x           link entre arquivo xaml e o arquivo code
+    -->
+
+    <!-- Type of content is View -->
+    <!-- AQUI so podemos ter uma single view -->
+    <!--nao podemos ter multiple view, multiple widgets aqui-->
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Button 
+                Text="Click me"
+                Clicked="Button_Clicked"></Button>
+            <Label 
+                x:Name="label"
+                Text="Hello World"></Label>
+            <Slider
+                x:Name="slider"
+                ValueChanged="Slider_ValueChanged"></Slider>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
