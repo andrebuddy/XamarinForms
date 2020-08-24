@@ -23,7 +23,14 @@
                 Clicked="Button_Clicked"></Button>
             <Label 
                 x:Name="label"
-                Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='Value is {0:F2}' }"></Label>
+                Text="{Binding 
+                    Source={x:Reference slider}, 
+                    Path=Value, 
+                    StringFormat='Value is {0:F2}' }"
+                Opacity="{Binding 
+                    Source={x:Reference slider},
+                    Path=Value}"
+                />
             <Slider
                 x:Name="slider"></Slider>
         </StackLayout>
