@@ -16,6 +16,13 @@
     <!-- Type of content is View -->
     <!-- AQUI so podemos ter uma single view -->
     <!--nao podemos ter multiple view, multiple widgets aqui-->
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" 
+            iOS="0, 20, 0, 0" 
+            Android="100, 20, 0, 0"/>
+    </ContentPage.Padding>
+    
     <ContentPage.Content>
         <StackLayout 
             BindingContext="{x:Reference slider}"
