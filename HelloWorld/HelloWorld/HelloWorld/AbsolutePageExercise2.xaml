@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HelloWorld.AbsolutePageExercise2">
+    <ContentPage.Content>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All">
+            <Image AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   Source="flower.jfif"
+                   Aspect="AspectFill"/>
+            <Label AbsoluteLayout.LayoutBounds="0, 0, 1, 0.2"
+                   AbsoluteLayout.LayoutFlags="All"
+                   TextColor="White"
+                   Margin="20"
+                   FontSize="30"
+                   HorizontalOptions="Center"
+                Text="Relax"/>
+            <BoxView AbsoluteLayout.LayoutBounds="0, 1, 1, 100"
+                     AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                     BackgroundColor="LightSkyBlue"
+                     Opacity="0.5"
+                     />
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 1, 1, 100"
+                         AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                         Orientation="Horizontal"
+                         Padding="30">
+                <Label FontSize="15" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       Text="Profile"/>
+                <Label FontSize="15" 
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       Text="Medidate"/>
+                <Label FontSize="15" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       Text="Themes"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
