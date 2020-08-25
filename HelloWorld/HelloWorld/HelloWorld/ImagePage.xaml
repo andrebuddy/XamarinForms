@@ -4,8 +4,20 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="HelloWorld.ImagePage">
+             x:Class="HelloWorld.ImagePage"
+             BackgroundColor="Black">
     <ContentPage.Content>
-        <Image x:Name="image" />
+        <AbsoluteLayout>
+            <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5, 0.5, 100, 100"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               IsRunning="{Binding Source={x:Reference image}, Path=IsLoading}"
+                               Color="White"/>
+            <!-- AspectFit e default-->
+            <Image x:Name="image"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   Aspect="Fill"/>
+
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

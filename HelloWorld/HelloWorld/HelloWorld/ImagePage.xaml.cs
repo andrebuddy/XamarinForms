@@ -16,19 +16,27 @@ namespace HelloWorld
         {
             InitializeComponent();
 
+
+        }
+
+        private void setImageInternet()
+        {
             var uriString = "https://www.denhaag.nl/upload/83b69004-d2d2-4e4d-a999-6169e576208e_Zwemmer.jpg";
-            //image.Source = uriString;
-            //var imageSource = (UriImageSource) ImageSource.FromUri(new Uri(uriString));
 
             var imageSource = new UriImageSource
             {
                 Uri = new Uri(uriString)
             };
-            imageSource.CachingEnabled = false;
-            imageSource.CacheValidity = TimeSpan.FromHours(1);
+            //imageSource.CachingEnabled = true;
+            //imageSource.CacheValidity = TimeSpan.FromHours(1);
 
             image.Source = imageSource;
+        }
 
+        private void setImageAlternatives()
+        {
+            //image.Source = uriString;
+            //var imageSource = (UriImageSource) ImageSource.FromUri(new Uri(uriString));
         }
     }
 }
