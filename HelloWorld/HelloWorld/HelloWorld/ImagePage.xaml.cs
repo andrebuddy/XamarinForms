@@ -16,7 +16,8 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-
+            //ApplicationName.Folder/foldersName.ImageNameWithExtension
+            image.Source = ImageSource.FromResource("HelloWorld.Images.background.jpg");
         }
 
         private void setImageInternet()
