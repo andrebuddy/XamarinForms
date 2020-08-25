@@ -8,19 +8,28 @@
              xmlns:local="clr-namespace:HelloWorld.MarkupExtensions"
              BackgroundColor="Black">
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <!--<AbsoluteLayout>
             <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5, 0.5, 100, 100"
                                AbsoluteLayout.LayoutFlags="PositionProportional"
                                IsRunning="{Binding Source={x:Reference image}, Path=IsLoading}"
                                Color="White"/>
-            <!-- AspectFit e default-->
+            --><!-- AspectFit e default--><!--
             <Image x:Name="image"
                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                    AbsoluteLayout.LayoutFlags="All"
                    Aspect="Fill"
                    Source="{local:EmbeddedImage HelloWorld.Images.background.jpg}"
                    />
+        </AbsoluteLayout>-->
 
-        </AbsoluteLayout>
+        <Button x:Name="btn">
+            <Button.ImageSource>
+                <OnPlatform x:TypeArguments="FileImageSource"
+                            iOS="clock.png"
+                            Android="clock.png"
+                            WinPhone="Images/clock.png"/>
+            </Button.ImageSource>
+        </Button>
+
     </ContentPage.Content>
 </ContentPage>

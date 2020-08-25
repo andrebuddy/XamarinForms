@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace HelloWorld
@@ -12,15 +13,24 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ImagePage : ContentPage
     {
+        [Obsolete]
         public ImagePage()
         {
             InitializeComponent();
         }
 
+        private void setImagePlatformSpecific()
+        {
+            //btn.ImageSource = (FileImageSource)ImageSource.FromFile(Device.OnPlatform(
+            //    iOS: "clock.png",
+            //    Android: "clock.png",
+            //    WinPhone: "Images/clock.png"));
+        }
+
         private void SetImageResource()
         {
             //ApplicationName.Folder/foldersName.ImageNameWithExtension
-            image.Source = ImageSource.FromResource("HelloWorld.Images.background.jpg");
+            //image.Source = ImageSource.FromResource("HelloWorld.Images.background.jpg");
         }
 
         private void SetImageInternet()
@@ -34,7 +44,7 @@ namespace HelloWorld
             //imageSource.CachingEnabled = true;
             //imageSource.CacheValidity = TimeSpan.FromHours(1);
 
-            image.Source = imageSource;
+            //image.Source = imageSource;
         }
 
         private void SetImageAlternatives()
