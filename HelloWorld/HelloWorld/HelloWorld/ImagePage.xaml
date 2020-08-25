@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="HelloWorld.ImagePage"
+             xmlns:local="clr-namespace:HelloWorld.MarkupExtensions"
              BackgroundColor="Black">
     <ContentPage.Content>
         <AbsoluteLayout>
@@ -16,7 +17,9 @@
             <Image x:Name="image"
                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                    AbsoluteLayout.LayoutFlags="All"
-                   Aspect="Fill"/>
+                   Aspect="Fill"
+                   Source="{local:EmbeddedImage HelloWorld.Images.background.jpg}"
+                   />
 
         </AbsoluteLayout>
     </ContentPage.Content>

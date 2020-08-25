@@ -15,12 +15,15 @@ namespace HelloWorld
         public ImagePage()
         {
             InitializeComponent();
+        }
 
+        private void SetImageResource()
+        {
             //ApplicationName.Folder/foldersName.ImageNameWithExtension
             image.Source = ImageSource.FromResource("HelloWorld.Images.background.jpg");
         }
 
-        private void setImageInternet()
+        private void SetImageInternet()
         {
             var uriString = "https://www.denhaag.nl/upload/83b69004-d2d2-4e4d-a999-6169e576208e_Zwemmer.jpg";
 
@@ -34,7 +37,7 @@ namespace HelloWorld
             image.Source = imageSource;
         }
 
-        private void setImageAlternatives()
+        private void SetImageAlternatives()
         {
             //image.Source = uriString;
             //var imageSource = (UriImageSource) ImageSource.FromUri(new Uri(uriString));
