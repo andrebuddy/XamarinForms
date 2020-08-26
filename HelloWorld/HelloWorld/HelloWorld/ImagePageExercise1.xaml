@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.ImagePageExercise1">
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="Black">
+            <StackLayout x:Name="controlsSection"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 0.4"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Orientation="Horizontal"
+                         Margin="30">
+                <Button x:Name="left" 
+                        HorizontalOptions="Center"
+                        BackgroundColor="Black"
+                        Clicked="Left_Clicked">
+                    <Button.ImageSource>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                            iOS="left.png"
+                            Android="left.png"
+                            WinPhone="Images/left.png"/>
+                    </Button.ImageSource>
+                </Button>
+
+                <ActivityIndicator IsRunning="{Binding Source={x:Reference photo}, Path=IsLoading}"
+                                   Color="White"
+                                   HorizontalOptions="CenterAndExpand"/>
+                <Button x:Name="right" 
+                        HorizontalOptions="Center"
+                        BackgroundColor="Black"
+                        Clicked="Right_Clicked">
+                    <Button.ImageSource>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                            iOS="right.png"
+                            Android="right.png"
+                            WinPhone="Images/right.png"/>
+                    </Button.ImageSource>
+                </Button>
+            </StackLayout>
+            <StackLayout x:Name="gallerySection"
+                         AbsoluteLayout.LayoutBounds="0, 0.7, 1, 0.4"
+                         AbsoluteLayout.LayoutFlags="All"
+                         BackgroundColor="Gray">
+                <Image x:Name="photo"
+                       VerticalOptions="FillAndExpand"
+                       Aspect="AspectFill"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -10,7 +10,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new ImageCirclePage();
+            MainPage = new ImagePageExercise1();
         }
 
         protected override void OnStart()
