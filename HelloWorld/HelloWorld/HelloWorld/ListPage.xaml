@@ -6,7 +6,9 @@
         <!--Simple list-->
         <ListView x:Name="listView"
                   ItemSelected="ListView_ItemSelected"
-                  ItemTapped="ListView_ItemTapped">
+                  ItemTapped="ListView_ItemTapped"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="listView_Refreshing">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}" Detail="{Binding Status}">

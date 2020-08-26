@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
 namespace HelloWorld
@@ -82,6 +83,22 @@ namespace HelloWorld
         {
             var contact = (sender as MenuItem).CommandParameter as Contact;
             _contacts.Remove(contact);
+        }
+
+        private List<Contact> GetContacts()
+        {
+            return new List<Contact>
+            {
+                new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
+                new Contact { Name = "Joana", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Hey lets talk!" }
+            };
+        }
+
+        private void listView_Refreshing(object sender, EventArgs e)
+        {
+            listView.ItemsSource = GetContacts();
+
+            listView.EndRefresh();
         }
     }
 }
