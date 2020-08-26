@@ -1,7 +1,9 @@
 ﻿using HelloWorld.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +15,11 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListPage : ContentPage
     {
+        private ObservableCollection<Contact> _contacts;
+
         public ListPage()
         {
+
             InitializeComponent();
 
             setViewCell();
@@ -39,11 +44,13 @@ namespace HelloWorld
 
         private void setViewCell()
         {
-            listView.ItemsSource = new List<Contact>
+            _contacts = new ObservableCollection<Contact>
             {
                 new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
                 new Contact { Name = "Joana", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Hey lets talk!" }
             };
+
+            listView.ItemsSource = _contacts;
         }
 
         //Primeiro chamado
@@ -61,6 +68,20 @@ namespace HelloWorld
         {
             var contact = e.Item as Contact;
             DisplayAlert("Tapped", contact.Name, "OK");
+        }
+
+        private void Call_Clicked(object sender, EventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contact = menuItem.CommandParameter as Contact;
+
+            DisplayAlert("Call", contact.Name, "OK");
+        }
+
+        private void Delete_Clicked(object sender, EventArgs e)
+        {
+            var contact = (sender as MenuItem).CommandParameter as Contact;
+            _contacts.Remove(contact);
         }
     }
 }
