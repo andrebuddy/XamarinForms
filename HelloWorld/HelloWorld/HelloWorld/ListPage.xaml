@@ -5,6 +5,13 @@
     <ContentPage.Content>
         <ListView x:Name="listView"
                   SeparatorColor="Aqua"
-                  SeparatorVisibility="Default"/>
+                  SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<TextCell Text="{Binding Name}" Detail="{Binding Status}" TextColor="Black" DetailColor="DarkBlue" />-->
+                    <ImageCell Text="{Binding Name}" Detail="{Binding Status}" TextColor="Black" DetailColor="DarkBlue" ImageSource="{Binding ImageUrl}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
