@@ -5,11 +5,20 @@
     <ContentPage.Content>
         <ListView x:Name="listView"
                   SeparatorColor="Aqua"
-                  SeparatorVisibility="Default">
-            <ListView.ItemTemplate>
+                  SeparatorVisibility="Default"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate >
                 <DataTemplate>
-                    <!--<TextCell Text="{Binding Name}" Detail="{Binding Status}" TextColor="Black" DetailColor="DarkBlue" />-->
-                    <ImageCell Text="{Binding Name}" Detail="{Binding Status}" TextColor="Black" DetailColor="DarkBlue" ImageSource="{Binding ImageUrl}"/>
+                    <ViewCell >
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Image Source="{Binding ImageUrl}" HeightRequest="75" WidthRequest="75"/>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Status}" TextColor="Gray"/>
+                            </StackLayout>
+                            <Button Text="Follow" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
