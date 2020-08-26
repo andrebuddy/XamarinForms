@@ -25,7 +25,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            SetImageInternet(_imagesUriArray[0]);
+            SetImageInternet(_imagesUriArray[_index]);
         }
 
         private void SetImageInternet(string uriString)
