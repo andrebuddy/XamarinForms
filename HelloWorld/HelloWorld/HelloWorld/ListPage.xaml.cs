@@ -27,6 +27,7 @@ namespace HelloWorld
             //setGroupCell();
         }
 
+        //Grouping Items
         private void setGroupCell()
         {
             listView.ItemsSource = new List<ContactGroup>
@@ -43,6 +44,7 @@ namespace HelloWorld
             };
         }
 
+        //Customs Cells
         private void setViewCell()
         {
             _contacts = new ObservableCollection<Contact>
@@ -54,7 +56,21 @@ namespace HelloWorld
             listView.ItemsSource = _contacts;
         }
 
-        //Primeiro chamado
+        private IEnumerable<Contact> GetContacts(string searchText = null)
+        {
+            var contacts = new List<Contact>
+            {
+                new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
+                new Contact { Name = "Joana", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Hey lets talk!" }
+            };
+
+            if (string.IsNullOrEmpty(searchText))
+                return contacts;
+
+            return contacts.Where(c => c.Name.ToLower().StartsWith(searchText.ToLower()));
+        }
+
+        //Handeling Selections - Primeiro chamado
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var contact = e.SelectedItem as Contact;
@@ -64,13 +80,14 @@ namespace HelloWorld
             //listView.SelectedItem = null;
         }
 
-        //Segundo e proximas chamadas
+        //Handeling Selections - Segundo e proximas chamadas
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var contact = e.Item as Contact;
             DisplayAlert("Tapped", contact.Name, "OK");
         }
 
+        //Context Actions
         private void Call_Clicked(object sender, EventArgs e)
         {
             var menuItem = sender as MenuItem;
@@ -85,20 +102,18 @@ namespace HelloWorld
             _contacts.Remove(contact);
         }
 
-        private List<Contact> GetContacts()
-        {
-            return new List<Contact>
-            {
-                new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
-                new Contact { Name = "Joana", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Hey lets talk!" }
-            };
-        }
-
+        //Pull to Refresh
         private void listView_Refreshing(object sender, EventArgs e)
         {
             listView.ItemsSource = GetContacts();
 
             listView.EndRefresh();
+        }
+
+        //Search Bar
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            listView.ItemsSource = GetContacts(e.NewTextValue); 
         }
     }
 }

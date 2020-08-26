@@ -3,47 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloWorld.ListPage">
     <ContentPage.Content>
-        <!--Simple list-->
-        <ListView x:Name="listView"
+        <StackLayout>
+            <SearchBar Placeholder="Search.."
+                       PlaceholderColor="Black"
+                       TextColor="Blue"
+                       FontAttributes="Bold"
+                       FontSize="Caption"
+                       TextChanged="SearchBar_TextChanged"/>
+
+            <!--Simple list-->
+            <ListView x:Name="listView"
                   ItemSelected="ListView_ItemSelected"
                   ItemTapped="ListView_ItemTapped"
                   IsPullToRefreshEnabled="True"
                   Refreshing="listView_Refreshing">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Status}">
-                        <TextCell.ContextActions>
-                            <MenuItem Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}"/>
-                            <MenuItem Text="Delete" Clicked="Delete_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
-                        </TextCell.ContextActions>
-                    </TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
-        <!-- Custom cell -->
-        <!--<ListView x:Name="listView"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Status}">
+                            <TextCell.ContextActions>
+                                <MenuItem Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}"/>
+                                <MenuItem Text="Delete" Clicked="Delete_Clicked" IsDestructive="True" CommandParameter="{Binding .}"/>
+                            </TextCell.ContextActions>
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Custom cell -->
+            <!--<ListView x:Name="listView"
                   SeparatorColor="Aqua"
                   SeparatorVisibility="Default"
                   HasUnevenRows="True">
-            <ListView.ItemTemplate 
-                <DataTemplate>
-                    <ViewCell >
-                        <StackLayout Orientation="Horizontal" Padding="5">
-                            <Image Source="{Binding ImageUrl}" HeightRequest="75" WidthRequest="75"/>
-                            <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                                <Label Text="{Binding Name}"/>
-                                <Label Text="{Binding Status}" TextColor="Gray"/>
+                <ListView.ItemTemplate 
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Image Source="{Binding ImageUrl}" HeightRequest="75" WidthRequest="75"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Status}" TextColor="Gray"/>
+                                </StackLayout>
+                                <Button Text="Follow" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Button Text="Follow" VerticalOptions="Center"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate
-            </ListView.ItemTemplate>
-        </ListView-->
-            
-        <!-- Group -->
-        <!--<ListView x:Name="listView"
+                        </ViewCell>
+                    </DataTemplate
+                </ListView.ItemTemplate>
+            </ListView-->
+
+            <!-- Group -->
+            <!--<ListView x:Name="listView"
                   IsGroupingEnabled="True" 
                   GroupDisplayBinding="{Binding Title}"
                   GroupShortNameBinding="{Binding ShortTitle}">
@@ -52,6 +60,7 @@
                     <TextCell Text="{Binding Name}" Detail="{Binding Status}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->    
+        </ListView>-->
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
