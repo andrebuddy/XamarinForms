@@ -17,7 +17,8 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            setGroupCell();
+            setViewCell();
+            //setGroupCell();
         }
 
         private void setGroupCell()
@@ -43,6 +44,23 @@ namespace HelloWorld
                 new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
                 new Contact { Name = "Joana", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Hey lets talk!" }
             };
+        }
+
+        //Primeiro chamado
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var contact = e.SelectedItem as Contact;
+            DisplayAlert("Selected", contact.Name, "OK");
+
+            //desactivar selecao
+            //listView.SelectedItem = null;
+        }
+
+        //Segundo e proximas chamadas
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var contact = e.Item as Contact;
+            DisplayAlert("Tapped", contact.Name, "OK");
         }
     }
 }

@@ -3,6 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloWorld.ListPage">
     <ContentPage.Content>
+        <!--Simple list-->
+        <ListView x:Name="listView"
+                  ItemSelected="ListView_ItemSelected"
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Status}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
         <!-- Custom cell -->
         <!--<ListView x:Name="listView"
                   SeparatorColor="Aqua"
@@ -25,7 +36,7 @@
         </ListView-->
             
         <!-- Group -->
-        <ListView x:Name="listView"
+        <!--<ListView x:Name="listView"
                   IsGroupingEnabled="True" 
                   GroupDisplayBinding="{Binding Title}"
                   GroupShortNameBinding="{Binding ShortTitle}">
@@ -34,6 +45,6 @@
                     <TextCell Text="{Binding Name}" Detail="{Binding Status}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>    
+        </ListView>-->    
     </ContentPage.Content>
 </ContentPage>
