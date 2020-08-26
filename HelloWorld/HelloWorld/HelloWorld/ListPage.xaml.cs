@@ -17,6 +17,27 @@ namespace HelloWorld
         {
             InitializeComponent();
 
+            setGroupCell();
+        }
+
+        private void setGroupCell()
+        {
+            listView.ItemsSource = new List<ContactGroup>
+            {
+                new ContactGroup ("M", "Instructor")
+                {
+                    new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
+                },
+                new ContactGroup ("J", "Family")
+                {
+                    new Contact { Name = "Joana", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Hey lets talk!" },
+                    new Contact { Name = "Antonio", ImageUrl = "https://images.pexels.com/photos/3765175/pexels-photo-3765175.jpeg", Status = "Bofia" }
+                }
+            };
+        }
+
+        private void setViewCell()
+        {
             listView.ItemsSource = new List<Contact>
             {
                 new Contact { Name = "Mosh", ImageUrl = "https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg" },
