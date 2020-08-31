@@ -19,7 +19,7 @@ namespace HelloWorld
 
         async private void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new IntroductionPage());
+            await Navigation.PushModalAsync(new IntroductionPage());
         }
     }
 }
