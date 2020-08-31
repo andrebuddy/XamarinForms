@@ -17,7 +17,7 @@ namespace HelloWorld
             //};
 
             //MainPage = new MyTabbedPage();
-            MainPage = new MyCarouselPage();
+            MainPage = new PopupPage();
         }
 
         protected override void OnStart()
