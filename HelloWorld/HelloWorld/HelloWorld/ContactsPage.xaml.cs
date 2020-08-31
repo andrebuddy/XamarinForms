@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace HelloWorld
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ContactsPage : ContentPage
+    public partial class ContactsPage : MasterDetailPage
     {
 		public ContactsPage()
 		{
@@ -23,15 +23,12 @@ namespace HelloWorld
 			};
 		}
 
-        async private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
 			var contact = e.SelectedItem as Contact;
-
-			if (contact == null)
-				return;
-
-			await Navigation.PushAsync(new ContactDetailsPage(contact));
-			listView.SelectedItem = null;
+            Detail = new ContactDetailsPage(contact);
+            //Master goes away and detail is presented
+            IsPresented = false;
         }
     }
 }

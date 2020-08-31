@@ -10,11 +10,13 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ContactsPage())
-            {
-                BarBackgroundColor = Color.Chocolate,
-                BarTextColor = Color.White
-            };
+            //MainPage = new NavigationPage(new ContactsPage())
+            //{
+            //    BarBackgroundColor = Color.Chocolate,
+            //    BarTextColor = Color.White
+            //};
+
+            MainPage = new ContactsPage();
         }
 
         protected override void OnStart()
