@@ -16,7 +16,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new ContactsPage();
+            MainPage = new MyTabbedPage();
         }
 
         protected override void OnStart()
