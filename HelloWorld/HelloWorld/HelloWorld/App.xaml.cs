@@ -16,7 +16,8 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new MyTabbedPage();
+            //MainPage = new MyTabbedPage();
+            MainPage = new MyCarouselPage();
         }
 
         protected override void OnStart()
