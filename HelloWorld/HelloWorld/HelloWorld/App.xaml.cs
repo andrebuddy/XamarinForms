@@ -16,8 +16,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            //MainPage = new MyTabbedPage();
-            MainPage = new PopupPage();
+            MainPage = new NavigationPage(new ToolBarPage());
         }
 
         protected override void OnStart()
