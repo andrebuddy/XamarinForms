@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.EntryEditorPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Keyboard="Numeric"
+                   Placeholder="Phone"/>
+            <Entry IsPassword="True"
+                   Completed="Entry_Completed"
+                   TextChanged="Entry_TextChanged" />
+            <Label x:Name="labelTextChanged"/>
+            <Label x:Name="labelTextCompleted" />
+            <Editor BackgroundColor="Yellow"
+                    VerticalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
