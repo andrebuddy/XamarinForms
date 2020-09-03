@@ -16,7 +16,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new NavigationPage(new PickerPage());
+            MainPage = new NavigationPage(new DateTimePickerPage());
         }
 
         protected override void OnStart()
