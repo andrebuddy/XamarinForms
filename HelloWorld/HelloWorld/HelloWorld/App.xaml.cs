@@ -16,7 +16,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new NavigationPage(new SwitchPage());
+            MainPage = new NavigationPage(new SliderPage());
         }
 
         protected override void OnStart()

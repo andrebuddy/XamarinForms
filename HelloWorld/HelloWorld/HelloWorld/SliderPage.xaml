@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.SliderPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- The order we set values are important -->
+            <!-- By default, the default values (Min==0, Max==1)--> 
+            <!-- So, Min(10) > Max(1) EXCEPTION -->
+            <Slider x:Name="slider" 
+                    Maximum="255" 
+                    Minimum="10"
+                    Value="50"/>
+            <Label Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='{0:N0}'}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
