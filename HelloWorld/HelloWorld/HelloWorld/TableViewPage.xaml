@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HelloWorld.TableViewPage">
+             x:Class="HelloWorld.TableViewPage"
+             xmlns:local="clr-namespace:HelloWorld">
     <ContentPage.Content>
         <StackLayout>
             <TableView Intent="Menu">
@@ -11,24 +12,9 @@
                     <SwitchCell Text="Notifications" On="True"/>
                 </TableSection>
                 <TableSection Title="Date/Time">
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13, 0">
-                            <Label Text="All-day" VerticalOptions="Center"/>
-                            <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13, 0">
-                            <Label Text="Starts" VerticalOptions="Center"/>
-                            <DatePicker Date="3 Sep 2020" HorizontalOptions="EndAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13, 0">
-                            <Label Text="Ends" VerticalOptions="Center"/>
-                            <DatePicker Date="30 Sep 2020" HorizontalOptions="EndAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
+                    <local:DateSwitchCell Label="All-day" />
+                    <local:DateTimeCell Label="Start"/>
+                    <local:DateTimeCell Label="End"/>
                 </TableSection>
             </TableView>
         </StackLayout>

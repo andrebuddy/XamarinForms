@@ -30,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DateTimeCell.xaml.cs">
+      <DependentUpon>DateTimeCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="StackPageExercise1.xaml.cs">
       <DependentUpon>StackPageExercise1.xaml</DependentUpon>
     </Compile>
@@ -49,6 +52,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ContactsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DateSwitchCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="DateTimeCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="DateTimePicker.xaml">
