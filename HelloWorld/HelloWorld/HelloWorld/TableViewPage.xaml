@@ -12,9 +12,19 @@
                     <SwitchCell Text="Notifications" On="True"/>
                 </TableSection>
                 <TableSection Title="Date/Time">
-                    <local:DateSwitchCell Label="All-day" />
+                    <local:DateSwitchCell Label="Notifications" />
                     <local:DateTimeCell Label="Start"/>
                     <local:DateTimeCell Label="End"/>
+                    <ViewCell Tapped="ViewCell_Tapped">
+                        <StackLayout Orientation="Horizontal" Padding="13, 5">
+                            <Label Text="Contact Method" VerticalOptions="Center"/>
+                            <Label x:Name="contactMethod"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="EndAndExpand"
+                                   Text="None"
+                                   TextColor="Gray" />
+                        </StackLayout>
+                    </ViewCell>
                 </TableSection>
             </TableView>
         </StackLayout>
