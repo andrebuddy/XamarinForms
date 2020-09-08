@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.ContactDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Menu">
+                <TableSection Title="Name">
+                    <EntryCell x:Name="FirstName" 
+                               Label="First Name" 
+                               Placeholder="(eg Jonh)" 
+                               Text="{Binding FirstName}"/>
+                    <EntryCell x:Name="LastName" 
+                               Label="Last Name" 
+                               Placeholder="(eg Doe)" 
+                               Text="{Binding LastName}"/>
+                </TableSection>
+                <TableSection Title="Contact">
+                    <EntryCell x:Name="Phone" 
+                               Label="Phone" 
+                               Placeholder="(eg 123456789)" 
+                               Text="{Binding Phone}"/>
+                    <EntryCell x:Name="Email" 
+                               Label="Email" 
+                               Placeholder="(eg jonh@doe.com)" 
+                               Text="{Binding Email}"/>
+                </TableSection>
+                <TableSection Title="Other">
+                    <SwitchCell x:Name="Blocked" 
+                                Text="Blocked" 
+                                On="{Binding Blocked}"/>
+                </TableSection>
+            </TableView>
+            <Button Text="Save" 
+                    Clicked="Save_Contact" 
+                    Command="{Binding .}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

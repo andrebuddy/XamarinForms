@@ -1,4 +1,5 @@
-﻿using HelloWorld.Services;
+﻿using HelloWorld.Models;
+using HelloWorld.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,33 @@ namespace HelloWorld
 
         private void Add_Contact(object sender, EventArgs e)
         {
+            var page = new ContactDetailPage(new ContactBook());
 
+            page.ContactAdded += (source, contact) =>
+            {
+                _service.AddContact(contact);
+            };
+
+            Navigation.PushAsync(new ContactDetailPage(new ContactBook()));
         }
 
-        private void Select_Contact(object sender, ItemTappedEventArgs e)
+        private async void Select_Contact(object sender, ItemTappedEventArgs e)
         {
+            var contactSelected = e.Item as ContactBook;
+            var page = new ContactDetailPage(contactSelected);
 
+            page.ContactUpdated += (source, contact) =>
+            {
+                _service.UpdateContact(contact.Id, contact);
+            };
+
+            await Navigation.PushAsync(page);
+        }
+
+        private void Delete_Contact(object sender, EventArgs e)
+        {
+            var contactToDelete = (sender as MenuItem).CommandParameter as ContactBook;
+            _service.DeleteContact(contactToDelete.Id);
         }
     }
 }

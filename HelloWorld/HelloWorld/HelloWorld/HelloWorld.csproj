@@ -48,7 +48,7 @@
     <EmbeddedResource Update="AbsolutePageExercise2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ContactDetailsPage.xaml">
+    <EmbeddedResource Update="ContactDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ContactMethodsPage.xaml">

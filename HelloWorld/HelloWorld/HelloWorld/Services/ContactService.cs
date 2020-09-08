@@ -25,5 +25,27 @@ namespace HelloWorld.Services
         {
             return _contacts.First(c => c.Id == id);
         }
+
+        public void UpdateContact(int id, ContactBook contact)
+        {
+            var contactToUpdate = _contacts.Single(c => c.Id == id);
+            
+            contactToUpdate.FirstName = contact.FirstName;
+            contactToUpdate.LastName = contact.LastName;
+            contactToUpdate.Phone = contact.Phone;
+            contactToUpdate.Blocked = contact.Blocked;
+        }
+
+        public void AddContact(ContactBook contact)
+        {
+            _contacts.Add(contact);
+        }
+
+        public void DeleteContact(int id)
+        {
+            var contactToDelete = _contacts.Single(c => c.Id == id);
+            _contacts.Remove(contactToDelete);
+        }
+
     }
 }

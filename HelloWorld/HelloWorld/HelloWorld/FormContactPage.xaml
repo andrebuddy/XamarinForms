@@ -18,6 +18,9 @@
                                 <Label Text="{Binding FirstName}"/>
                                 <Label Text="{Binding LastName}"/>
                             </StackLayout>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete" Clicked="Delete_Contact" IsDestructive="True" CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
