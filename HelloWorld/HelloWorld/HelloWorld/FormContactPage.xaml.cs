@@ -28,24 +28,36 @@ namespace HelloWorld
             //BindingContext = _service.GetContacts();
         }
 
-        private void Add_Contact(object sender, EventArgs e)
+        private async void OnAddContact(object sender, EventArgs e)
         {
             var page = new ContactDetailPage(new ContactBook());
 
-            page.ContactAdded += (source, contact) =>
+            page.AddContactHandler += (source, contact) =>
             {
                 _service.AddContact(contact);
             };
 
-            Navigation.PushAsync(new ContactDetailPage(new ContactBook()));
+            await Navigation.PushAsync(new ContactDetailPage(new ContactBook()));
         }
 
-        private async void Select_Contact(object sender, ItemTappedEventArgs e)
+        private async void OnContactSelected(object sender, ItemTappedEventArgs e)
         {
-            var contactSelected = e.Item as ContactBook;
-            var page = new ContactDetailPage(contactSelected);
+            // We need to check if SelectedItem is null because further below 
+            // we de-select the selected item. This will raise another ItemSelected
+            // event, so this method will be called straight away. If we don't
+            // check for null here, we'll get a NullReferenceException.
+            if (listView.SelectedItem == null)
+                return;
 
-            page.ContactUpdated += (source, contact) =>
+            var selectedContact = e.Item as ContactBook;
+
+            // We de-select the selected item, so when we come back to the Contacts
+            // page we can tap it again and navigate to ContactDetail. 
+            listView.SelectedItem = null;
+
+            var page = new ContactDetailPage(selectedContact);
+
+            page.UpdateContactHandler += (source, contact) =>
             {
                 _service.UpdateContact(contact.Id, contact);
             };
@@ -53,7 +65,7 @@ namespace HelloWorld
             await Navigation.PushAsync(page);
         }
 
-        private void Delete_Contact(object sender, EventArgs e)
+        private void OnContactDeleted(object sender, EventArgs e)
         {
             var contactToDelete = (sender as MenuItem).CommandParameter as ContactBook;
             _service.DeleteContact(contactToDelete.Id);

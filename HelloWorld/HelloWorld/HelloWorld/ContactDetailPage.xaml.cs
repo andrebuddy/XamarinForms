@@ -14,8 +14,8 @@ namespace HelloWorld
     public partial class ContactDetailPage : ContentPage
     {
         //Events
-        public event EventHandler<ContactBook> ContactAdded;
-        public event EventHandler<ContactBook> ContactUpdated;
+        public event EventHandler<ContactBook> AddContactHandler;
+        public event EventHandler<ContactBook> UpdateContactHandler;
 
         public ContactDetailPage(ContactBook contact = null)
         {
@@ -24,15 +24,22 @@ namespace HelloWorld
             BindingContext = contact;
         }
 
-        //TODO PLEASE ENTER THE NAME
-        public void Save_Contact(object sender, EventArgs e)
+        private async void OnSave(object sender, EventArgs e)
         {
             var contact = BindingContext as ContactBook;
 
+            if (string.IsNullOrEmpty(contact.FirstName) || string.IsNullOrEmpty(contact.LastName))
+            {
+                await DisplayAlert("Error", "Please enter the name.", "OK");
+                return;
+            }
+
             if (contact.Id == 0)
-                ContactAdded.Invoke(sender, contact);
+                AddContactHandler.Invoke(sender, contact);
             else
-                ContactUpdated.Invoke(sender, contact);
+                UpdateContactHandler.Invoke(sender, contact);
+
+            await Navigation.PopAsync();
         }
     }
 }

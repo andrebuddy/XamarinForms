@@ -32,7 +32,7 @@
                 </TableSection>
             </TableView>
             <Button Text="Save" 
-                    Clicked="Save_Contact" 
+                    Clicked="OnSave" 
                     Command="{Binding .}"/>
         </StackLayout>
     </ContentPage.Content>

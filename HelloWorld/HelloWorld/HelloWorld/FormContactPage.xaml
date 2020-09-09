@@ -5,12 +5,12 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="plus.png"
                      Text="Add" 
-                     Activated="Add_Contact"/>
+                     Activated="OnAddContact"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="listView"
-                      ItemTapped="Select_Contact">
+                      ItemTapped="OnContactSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -19,7 +19,7 @@
                                 <Label Text="{Binding LastName}"/>
                             </StackLayout>
                             <ViewCell.ContextActions>
-                                <MenuItem Text="Delete" Clicked="Delete_Contact" IsDestructive="True" CommandParameter="{Binding .}"/>
+                                <MenuItem Text="Delete" Clicked="OnContactDeleted" IsDestructive="True" CommandParameter="{Binding .}"/>
                             </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
