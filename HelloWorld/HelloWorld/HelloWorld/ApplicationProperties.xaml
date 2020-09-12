@@ -10,12 +10,10 @@
                         <EntryCell x:Name="title" 
                                    Text="{Binding Title}" 
                                    Label="Title" 
-                                   Placeholder="(eg Shopping)" 
-                                   Completed="OnChanged"/>
+                                   Placeholder="(eg Shopping)" />
                         <SwitchCell x:Name="notificationsEnabled" 
                                     Text="Notifications" 
-                                    On="{Binding NotificationsEnabled}"
-                                    OnChanged="OnChanged"/>
+                                    On="{Binding NotificationsEnabled}" />
                     </TableSection>
                 </TableRoot>
             </TableView>
