@@ -16,11 +16,10 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            if (Application.Current.Properties.ContainsKey("Name"))
-                title.Text = Application.Current.Properties["Name"].ToString();
+            var app = Application.Current as App;
 
-            if (Application.Current.Properties.ContainsKey("NotificationsEnabled"))
-                notificationsEnabled.On = (bool) Application.Current.Properties["NotificationsEnabled"];
+            title.Text = app.Title;
+            notificationsEnabled.On = app.NotificationsEnable;
         }
 
         //standard event handler, 
@@ -30,8 +29,9 @@ namespace HelloWorld
             // Persistence happens when app goes sleep mode
             // when we open another app, so this one goes background and another foreground
             // when we quit app
-            Application.Current.Properties["Name"] = title.Text;
-            Application.Current.Properties["NotificationsEnabled"] = notificationsEnabled.On;
+            var app = Application.Current as App;
+            app.Title = title.Text;
+            app.NotificationsEnable = notificationsEnabled.On;
 
             // we dont need wait
             //Application.Current.SavePropertiesAsync();
