@@ -46,7 +46,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new SqlLitePage());
         }
 
         protected override void OnStart()
