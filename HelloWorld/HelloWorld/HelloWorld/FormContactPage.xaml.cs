@@ -1,7 +1,9 @@
 ﻿using HelloWorld.Models;
+using HelloWorld.Repository;
 using HelloWorld.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,30 +16,33 @@ namespace HelloWorld
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormContactPage : ContentPage
     {
-        private ContactService _service = new ContactService();
+        private ContactService _service = new ContactService(new ContactRepository());
+        private ObservableCollection<ContactBook> _contacts;
 
         public FormContactPage()
         {
             InitializeComponent();
-            PopulateListView();
         }
 
-        private void PopulateListView()
+        protected override async void OnAppearing()
         {
-            listView.ItemsSource = _service.GetContacts();
-            //BindingContext = _service.GetContacts();
+            var contacts = await _service.GetContacts();
+            _contacts = new ObservableCollection<ContactBook>(contacts);
+            listView.ItemsSource = _contacts;
+
+            base.OnAppearing();
         }
 
         private async void OnAddContact(object sender, EventArgs e)
         {
             var page = new ContactDetailPage(new ContactBook());
 
-            page.AddContactHandler += (source, contact) =>
+            page.AddContactHandler += async (source, contact) =>
             {
-                _service.AddContact(contact);
+                await _service.AddContact(contact);
             };
 
-            await Navigation.PushAsync(new ContactDetailPage(new ContactBook()));
+            await Navigation.PushAsync(page);
         }
 
         private async void OnContactSelected(object sender, ItemTappedEventArgs e)
@@ -57,18 +62,35 @@ namespace HelloWorld
 
             var page = new ContactDetailPage(selectedContact);
 
-            page.UpdateContactHandler += (source, contact) =>
+            page.UpdateContactHandler += async (source, contact) =>
             {
-                _service.UpdateContact(contact.Id, contact);
+                var updated = await _service.UpdateContact(contact);
+                if (updated)
+                {
+                    selectedContact.Id = contact.Id;
+                    selectedContact.FirstName = contact.FirstName;
+                    selectedContact.LastName = contact.LastName;
+                    selectedContact.Phone = contact.Phone;
+                    selectedContact.Email = contact.Email;
+                    selectedContact.Blocked = contact.Blocked;
+                }
             };
 
             await Navigation.PushAsync(page);
         }
 
-        private void OnContactDeleted(object sender, EventArgs e)
+        private async void OnContactDeleted(object sender, EventArgs e)
         {
             var contactToDelete = (sender as MenuItem).CommandParameter as ContactBook;
-            _service.DeleteContact(contactToDelete.Id);
+
+            if (await DisplayAlert("Warning", $"Are you sure you want to delete {contactToDelete.FirstName}?", "Yes", "No"))
+            {
+                var deleted = await _service.DeleteContact(contactToDelete);
+                if (deleted)
+                {
+                    _contacts.Remove(contactToDelete);
+                }
+            }
         }
     }
 }

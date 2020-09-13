@@ -35,9 +35,9 @@ namespace HelloWorld
             }
 
             if (contact.Id == 0)
-                AddContactHandler.Invoke(sender, contact);
+                AddContactHandler?.Invoke(this, contact);
             else
-                UpdateContactHandler.Invoke(sender, contact);
+                UpdateContactHandler?.Invoke(this, contact);
 
             await Navigation.PopAsync();
         }
