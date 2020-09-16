@@ -46,7 +46,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new NavigationPage(new FormContactPage());
+            MainPage = new NavigationPage(new fingerPage());
         }
 
         protected override void OnStart()

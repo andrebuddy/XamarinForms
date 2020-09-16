@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
+using Plugin.Fingerprint;
+using Plugin.CurrentActivity;
 
 namespace HelloWorld.Droid
 {
@@ -25,6 +27,9 @@ namespace HelloWorld.Droid
 
             // Image Circle plugin
             ImageCircleRenderer.Init();
+
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
 
             LoadApplication(new App());
         }
