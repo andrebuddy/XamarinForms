@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloWorld.MoviesPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="movieName"
+                       TextChanged="OnFilterMovie"
+                       Placeholder="Search by title..."
+                       HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="cancelButton"
+                        Text="Cancel"
+                        Clicked="OnCancel"
+                        IsVisible="False"
+                        HorizontalOptions="End"/>
+            </StackLayout>
+
+            <AbsoluteLayout>
+                <ActivityIndicator  AbsoluteLayout.LayoutBounds="0.5, 0.5, 100, 100"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                                    IsRunning="{Binding Source={x:Reference cancelButton}, Path=IsVisible}"
+                                    Color="Red"/>
+
+                <ListView   x:Name="moviesListView"
+                            ItemSelected="OnSelectMovie"
+                            HasUnevenRows="True"
+                            SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="5, 0">
+                                    <Image Source="{Binding Poster}"
+                                           WidthRequest="40"
+                                           HeightRequest="60"/>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Title}" />
+                                        <Label Text="{Binding Year}"
+                                               TextColor="Blue"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </AbsoluteLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

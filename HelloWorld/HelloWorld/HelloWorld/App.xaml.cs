@@ -46,7 +46,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new NavigationPage(new fingerPage());
+            MainPage = new NavigationPage(new MoviesPage());
         }
 
         protected override void OnStart()
