@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelloWorld.Models
 {
-    public class OmDbApi
+    public class Omdb
     {
         [JsonProperty("Search")]
         public List<Movie> Movies { get; set; }

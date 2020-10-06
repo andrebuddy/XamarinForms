@@ -6,7 +6,7 @@
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="movieName"
-                       TextChanged="OnFilterMovie"
+                       TextChanged="OnTextChanged"
                        Placeholder="Search by title..."
                        HorizontalOptions="FillAndExpand"/>
                 <Button x:Name="cancelButton"
@@ -23,7 +23,7 @@
                                     Color="Red"/>
 
                 <ListView   x:Name="moviesListView"
-                            ItemSelected="OnSelectMovie"
+                            ItemSelected="OnMovieSelected"
                             HasUnevenRows="True"
                             SeparatorVisibility="None">
                     <ListView.ItemTemplate>
