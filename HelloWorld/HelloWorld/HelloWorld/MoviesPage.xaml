@@ -19,13 +19,17 @@
             <AbsoluteLayout>
                 <ActivityIndicator  AbsoluteLayout.LayoutBounds="0.5, 0.5, 100, 100"
                                     AbsoluteLayout.LayoutFlags="PositionProportional"
-                                    IsRunning="{Binding Source={x:Reference cancelButton}, Path=IsVisible}"
+                                    IsRunning="{Binding IsSearching}"
                                     Color="Red"/>
+                <Frame x:Name="notFound" Padding="20" HasShadow="false" IsVisible="false">
+                    <Label Text="No movies found matching your search." TextColor="Gray" />
+                </Frame>
 
                 <ListView   x:Name="moviesListView"
                             ItemSelected="OnMovieSelected"
                             HasUnevenRows="True"
-                            SeparatorVisibility="None">
+                            SeparatorVisibility="None"
+                            IsVisible="False">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

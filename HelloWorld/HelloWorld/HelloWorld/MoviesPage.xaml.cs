@@ -2,6 +2,7 @@
 using HelloWorld.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,8 +15,18 @@ namespace HelloWorld
         private MovieService _service = new MovieService();
         private ObservableCollection<Movie> _movies;
 
+        private BindableProperty IsSearchingProperty =
+            BindableProperty.Create("IsSearching", typeof(bool), typeof(MoviesPage), false);
+        public bool IsSearching
+        {
+            get { return (bool)GetValue(IsSearchingProperty); }
+            set { SetValue(IsSearchingProperty, value); }
+        }
+
         public MoviesPage()
         {
+            BindingContext = this;
+
             InitializeComponent();
         }
 
@@ -31,24 +42,25 @@ namespace HelloWorld
             if (e.NewTextValue == null || e.NewTextValue.Length < MovieService.MinSearchLength)
                 return;
 
-            await FindMovies(title: "andre");
+            await FindMovies(title: e.NewTextValue);
         }
 
         private async Task FindMovies(string title)
         {
             try
             {
-                cancelButton.IsVisible = true;
-                moviesListView.IsVisible = false;
+                IsSearching = true;
 
                 var movies = await _service.FindByTitle(title);
 
-                if (movies == null)
+                if (!movies.Any())
                     await DisplayAlert("Error", "No movies found matching your search", "OK");
 
                 _movies = new ObservableCollection<Movie>(movies);
 
                 moviesListView.ItemsSource = _movies;
+                moviesListView.IsVisible = _movies.Any();
+                notFound.IsVisible = !moviesListView.IsVisible;
             }
             catch (Exception)
             {
@@ -56,8 +68,7 @@ namespace HelloWorld
             }
             finally
             {
-                moviesListView.IsVisible = true;
-                cancelButton.IsVisible = false;
+                IsSearching = false;
             }
         }
 

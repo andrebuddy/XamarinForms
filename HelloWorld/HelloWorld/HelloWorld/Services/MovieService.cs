@@ -36,7 +36,7 @@ namespace HelloWorld.Services
             var content = await response.Content.ReadAsStringAsync();
             var omdb = JsonConvert.DeserializeObject<Omdb>(content);
 
-            return omdb.Movies;
+            return omdb.Movies ?? Enumerable.Empty<Movie>();
         }
 
         public async Task<Movie> FindById(string id)
