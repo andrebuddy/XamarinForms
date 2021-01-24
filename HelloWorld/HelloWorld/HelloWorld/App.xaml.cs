@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace HelloWorld
 {
@@ -46,7 +44,7 @@ namespace HelloWorld
             //    BarTextColor = Color.White
             //};
 
-            MainPage = new NavigationPage(new MoviesPage());
+            MainPage = new NavigationPage(new PlaylistPage());
         }
 
         protected override void OnStart()
