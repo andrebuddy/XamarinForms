@@ -8,9 +8,8 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView x:Name="playlistView"
-                  ItemsSource="{Binding Playlists, Mode=TwoWay}"
-                  SelectedItem="{Binding SelectedPlaylist}"
+        <ListView ItemsSource="{Binding Playlists}"
+                  SelectedItem="{Binding SelectedPlaylist, Mode=TwoWay}"
                   ItemSelected="OnPlaylistSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>

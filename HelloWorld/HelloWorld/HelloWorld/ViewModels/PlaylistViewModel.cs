@@ -7,11 +7,23 @@ namespace HelloWorld.ViewModels
      * This is a Plain Old CLR Objects
      * No references to Xamarin
      */
-    public class PlaylistViewModel
+    public class PlaylistViewModel : BaseViewModel
     {
         public ObservableCollection<Playlist> Playlists { get; private set; } = new ObservableCollection<Playlist>();
-        public Playlist SelectedPlaylist { get; set; }
-        public string Title { get; private set; } = "0 Playlists";
+
+        private Playlist _selectedPlaylist;
+        public Playlist SelectedPlaylist
+        {
+            get { return _selectedPlaylist; }
+            set { SetValue(ref _selectedPlaylist, value); }
+        }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetValue(ref _title, value); }
+        }
 
         public void AddPlaylist()
         {
