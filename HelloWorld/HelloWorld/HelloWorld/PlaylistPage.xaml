@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HelloWorld.PlaylistPage">
+             x:Class="HelloWorld.PlaylistPage"
+             Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="OnAddPlaylist" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView x:Name="playlistView" ItemSelected="OnPlaylistSelected">
+        <ListView x:Name="playlistView"
+                  ItemsSource="{Binding Playlists, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedPlaylist}"
+                  ItemSelected="OnPlaylistSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell
