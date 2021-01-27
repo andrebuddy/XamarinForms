@@ -4,7 +4,8 @@
              x:Class="HelloWorld.PlaylistPage"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="OnAddPlaylist" />
+        <ToolbarItem Text="Add"
+                     Command="{Binding AddPlaylistCommand}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
