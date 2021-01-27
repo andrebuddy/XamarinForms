@@ -1,52 +1,25 @@
-﻿using HelloWorld.Models;
-using System.Collections.ObjectModel;
+﻿using System.Drawing;
 
 namespace HelloWorld.ViewModels
 {
-    /*
-     * This is a Plain Old CLR Objects
-     * No references to Xamarin
-     */
     public class PlaylistViewModel : BaseViewModel
     {
-        public ObservableCollection<Playlist> Playlists { get; private set; } = new ObservableCollection<Playlist>();
+        public string Title { get; set; }
 
-        private Playlist _selectedPlaylist;
-        public Playlist SelectedPlaylist
+        private bool _isFavorite;
+        public bool IsFavorite
         {
-            get { return _selectedPlaylist; }
-            set { SetValue(ref _selectedPlaylist, value); }
+            get { return _isFavorite; }
+            set
+            {
+                SetValue(ref _isFavorite, value);
+                OnPropertyChanged(nameof(Color));
+            }
         }
 
-        private string _title;
-        public string Title
+        public Color Color
         {
-            get { return _title; }
-            set { SetValue(ref _title, value); }
-        }
-
-        public void AddPlaylist()
-        {
-            var newPlaylist = "Playlist " + (Playlists.Count + 1);
-
-            Playlists.Add(new Playlist { Title = newPlaylist });
-
-            UpdateTitle();
-        }
-
-        public void SelectPlaylist(Playlist selectedPlaylist)
-        {
-            if (selectedPlaylist == null)
-                return;
-
-            selectedPlaylist.IsFavorite = !selectedPlaylist.IsFavorite;
-
-            SelectedPlaylist = null;
-        }
-
-        private void UpdateTitle()
-        {
-            Title = $"{Playlists.Count} Playlists";
+            get { return IsFavorite ? Color.Pink : Color.Black; }
         }
     }
 }
