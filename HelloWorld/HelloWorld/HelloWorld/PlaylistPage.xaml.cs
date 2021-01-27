@@ -9,7 +9,7 @@ namespace HelloWorld
     {
         public PlaylistPage()
         {
-            BindingContext = new PlaylistsViewModel();
+            BindingContext = new PlaylistsViewModel(new PageService());
 
             InitializeComponent();
         }
