@@ -11,16 +11,20 @@ namespace HelloWorld.ViewModels
      */
     public class PlaylistsViewModel : BaseViewModel
     {
+        // private fields
+        private PlaylistViewModel _selectedPlaylist;
+        private string _title;
+        private readonly IPageService _pageService;
+
+        // all public properties that represent public interface this view model
         public ObservableCollection<PlaylistViewModel> Playlists { get; private set; } = new ObservableCollection<PlaylistViewModel>();
 
-        private PlaylistViewModel _selectedPlaylist;
         public PlaylistViewModel SelectedPlaylist
         {
             get { return _selectedPlaylist; }
             set { SetValue(ref _selectedPlaylist, value); }
         }
 
-        private string _title;
         public string Title
         {
             get { return _title; }
@@ -28,8 +32,7 @@ namespace HelloWorld.ViewModels
         }
 
         public ICommand AddPlaylistCommand { get; private set; }
-
-        private readonly IPageService _pageService;
+        public ICommand SelectPlaylistCommand { get; private set; }
 
         public PlaylistsViewModel(IPageService pageService)
         {
@@ -37,6 +40,7 @@ namespace HelloWorld.ViewModels
 
             // quando usamos nome metodo sem parentesis, representa uma acao
             AddPlaylistCommand = new Command(AddPlaylist);
+            SelectPlaylistCommand = new Command<PlaylistViewModel>(async vm => await SelectPlaylist(vm));
         }
 
         private void AddPlaylist()
@@ -48,7 +52,7 @@ namespace HelloWorld.ViewModels
             UpdateTitle();
         }
 
-        public async Task SelectPlaylist(PlaylistViewModel selectedPlaylist)
+        private async Task SelectPlaylist(PlaylistViewModel selectedPlaylist)
         {
             if (selectedPlaylist == null)
                 return;

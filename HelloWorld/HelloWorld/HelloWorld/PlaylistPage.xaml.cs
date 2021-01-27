@@ -9,24 +9,26 @@ namespace HelloWorld
     {
         public PlaylistPage()
         {
-            BindingContext = new PlaylistsViewModel(new PageService());
+            ViewModel = new PlaylistsViewModel(new PageService());
 
             InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
+            // ViewModel.LoadPlaylistCommand.Execute();
             base.OnAppearing();
-        }
-
-        private void OnAddPlaylist(object sender, System.EventArgs e)
-        {
-            (BindingContext as PlaylistsViewModel).AddPlaylist();
         }
 
         private void OnPlaylistSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            (BindingContext as PlaylistsViewModel).SelectPlaylist(e.SelectedItem as PlaylistViewModel);
+            ViewModel.SelectPlaylistCommand.Execute(e.SelectedItem as PlaylistViewModel);
+        }
+
+        public PlaylistsViewModel ViewModel
+        {
+            get { return BindingContext as PlaylistsViewModel; }
+            set { BindingContext = value; }
         }
     }
 }
