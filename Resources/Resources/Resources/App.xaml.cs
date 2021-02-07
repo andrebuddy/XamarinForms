@@ -10,7 +10,7 @@ namespace Resources
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Exercise1();
         }
 
         protected override void OnStart()
