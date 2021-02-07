@@ -5,7 +5,29 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!--we override buttonBackgroundColor in app-->
             <Color x:Key="buttonBackgroundColor">Red</Color>
+
+            <!--local style-->
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource buttonBackgroundColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BorderRadius" Value="{StaticResource borderRadius}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <!--based on local style-->
+            <Style x:Key="primaryButton" TargetType="Button" BasedOn="{StaticResource button}">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <!--global target type used by all label-->
+            <Style TargetType="Label">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="Green" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Header" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -14,17 +36,10 @@
             <Color x:Key="textColor">White</Color>
         </StackLayout.Resources>
 
-        <Button Text="Login"
-                BackgroundColor="{DynamicResource buttonBackgroundColor}"
-                TextColor="{StaticResource textColor}"
-                BorderRadius="{StaticResource borderRadius}"
-                FontAttributes="Bold"/>
+        <Button Text="Login" Style="{StaticResource primaryButton}" />
+        <Button Text="Register" Style="{StaticResource primaryButton}"/>
 
-        <Button Text="Register"
-                BackgroundColor="{DynamicResource buttonBackgroundColor}"
-                TextColor="{StaticResource textColor}"
-                BorderRadius="{StaticResource borderRadius}"
-                FontAttributes="Bold"/>
+        <Label Text="andre" />
 
         <Button Text="Change style" Clicked="Button_Clicked"/>
     </StackLayout>

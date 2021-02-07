@@ -8,6 +8,6 @@
             <ResourceDictionary>
                 <x:Int32 x:Key="borderRadius">20</x:Int32>
                 <Color x:Key="buttonBackgroundColor">Gray</Color>
-            </ResourceDictionary>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
