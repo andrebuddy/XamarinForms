@@ -8,6 +8,8 @@ namespace MessageCenter.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        private const string EventName = "SliderValueChanged";
+
         public MainPage()
         {
             InitializeComponent();
@@ -16,7 +18,10 @@ namespace MessageCenter.Pages
         private void OnButtonClicked(object sender, EventArgs e)
         {
             var page = new TargetPage();
-            page.SliderValueChanged += OnSliderValueChanged;
+            //page.SliderValueChanged += OnSliderValueChanged;
+
+            // here we are subscribing to the event
+            MessagingCenter.Subscribe<TargetPage, double>(this, EventName, OnSliderValueChanged);
 
             Navigation.PushAsync(page);
         }
