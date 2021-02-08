@@ -43,9 +43,9 @@ namespace ContactBook.ViewModels
 
             // Subscribe to events
             MessagingCenter.Subscribe<ContactDetailViewModel, Contact>
-                (this, "ContactAdded", OnContactAdded);
+                (this, Events.ContactAdded, OnContactAdded);
             MessagingCenter.Subscribe<ContactDetailViewModel, Contact>
-                (this, "ContactUpdated", OnContactUpdated);
+                (this, Events.ContactUpdated, OnContactUpdated);
         }
 
         private void OnContactAdded(ContactDetailViewModel source, Contact contact)

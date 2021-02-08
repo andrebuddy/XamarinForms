@@ -48,12 +48,12 @@ namespace ContactBook.ViewModels
             if (Contact.Id == 0)
             {
                 await _contactStore.Add(Contact);
-                MessagingCenter.Send(this, "ContactAdded", Contact);
+                MessagingCenter.Send(this, Events.ContactAdded, Contact);
             }
             else
             {
                 await _contactStore.Update(Contact);
-                MessagingCenter.Send(this, "ContactUpdated", Contact);
+                MessagingCenter.Send(this, Events.ContactUpdated, Contact);
             }
 
             await _pageService.PopAsync();
