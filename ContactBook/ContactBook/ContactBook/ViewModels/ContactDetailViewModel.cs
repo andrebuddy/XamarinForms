@@ -14,17 +14,9 @@ namespace ContactBook.ViewModels
 
         public Contact Contact { get; private set; }
 
-        // Events
-        public event EventHandler<Contact> ContactAdded;
-        public event EventHandler<Contact> ContactUpdated;
-
-        // Commands
         public ICommand SaveCommand { get; private set; }
 
-        public ContactDetailViewModel(
-            ContactViewModel viewModel,
-            IContactStore contactStore,
-            IPageService pageService)
+        public ContactDetailViewModel(ContactViewModel viewModel, IContactStore contactStore, IPageService pageService)
         {
             if (viewModel == null)
                 throw new ArgumentNullException(nameof(viewModel));
@@ -56,12 +48,12 @@ namespace ContactBook.ViewModels
             if (Contact.Id == 0)
             {
                 await _contactStore.Add(Contact);
-                ContactAdded?.Invoke(this, Contact);
+                MessagingCenter.Send(this, "ContactAdded", Contact);
             }
             else
             {
                 await _contactStore.Update(Contact);
-                ContactUpdated?.Invoke(this, Contact);
+                MessagingCenter.Send(this, "ContactUpdated", Contact);
             }
 
             await _pageService.PopAsync();

@@ -1,6 +1,8 @@
-﻿using ContactBook.Services;
+﻿using ContactBook.Models;
+using ContactBook.Services;
 using ContactBook.Views;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -38,6 +40,31 @@ namespace ContactBook.ViewModels
             AddContactCommand = new Command<ContactViewModel>(async vm => await AddContact());
             SelectContactCommand = new Command<ContactViewModel>(async vm => await SelectContact(vm));
             DeleteContactCommand = new Command<ContactViewModel>(async vm => await DeleteContact(vm));
+
+            // Subscribe to events
+            MessagingCenter.Subscribe<ContactDetailViewModel, Contact>
+                (this, "ContactAdded", OnContactAdded);
+            MessagingCenter.Subscribe<ContactDetailViewModel, Contact>
+                (this, "ContactUpdated", OnContactUpdated);
+        }
+
+        private void OnContactAdded(ContactDetailViewModel source, Contact contact)
+        {
+            Contacts.Add(new ContactViewModel(contact));
+        }
+
+        private void OnContactUpdated(ContactDetailViewModel source, Contact contact)
+        {
+            // Here we need to find the corresponding Contact object in our
+            // ObservableCollection first.
+            var contactInList = Contacts.Single(c => c.Id == contact.Id);
+
+            contactInList.Id = contact.Id;
+            contactInList.FirstName = contact.FirstName;
+            contactInList.LastName = contact.LastName;
+            contactInList.Phone = contact.Phone;
+            contactInList.Email = contact.Email;
+            contactInList.IsBlocked = contact.IsBlocked;
         }
 
         private async Task LoadData()
@@ -54,17 +81,7 @@ namespace ContactBook.ViewModels
 
         private async Task AddContact()
         {
-            var viewModel = new ContactDetailViewModel(
-                new ContactViewModel(),
-                _contactStore,
-                _pageService);
-
-            viewModel.ContactAdded += (source, contact) =>
-            {
-                Contacts.Add(new ContactViewModel(contact));
-            };
-
-            await _pageService.PushAsync(new ContactDetailPage(viewModel));
+            await _pageService.PushAsync(new ContactDetailPage(new ContactViewModel()));
         }
 
         private async Task SelectContact(ContactViewModel contact)
@@ -74,18 +91,7 @@ namespace ContactBook.ViewModels
 
             SelectedContact = null;
 
-            var viewModel = new ContactDetailViewModel(contact, _contactStore, _pageService);
-            viewModel.ContactUpdated += (source, updatedContact) =>
-            {
-                contact.Id = updatedContact.Id;
-                contact.FirstName = updatedContact.FirstName;
-                contact.LastName = updatedContact.LastName;
-                contact.Phone = updatedContact.Phone;
-                contact.Email = updatedContact.Email;
-                contact.IsBlocked = updatedContact.IsBlocked;
-            };
-
-            await _pageService.PushAsync(new ContactDetailPage(viewModel));
+            await _pageService.PushAsync(new ContactDetailPage(contact));
         }
 
         private async Task DeleteContact(ContactViewModel contact)
